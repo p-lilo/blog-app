@@ -42,7 +42,7 @@ function Navbar() {
           <ul className="menu p-6 w-80 min-h-full bg-purple-50 text-purple-800">
             <h1 className="text-2xl font-bold mb-4">Welcome {currentUser.name}</h1>
             <li>
-              <Link to="/favorites" className="hover:bg-purple-200 rounded-lg">Favorite Posts</Link>
+              <Link  className="hover:bg-purple-200 rounded-lg">Favorite Posts</Link>
             </li>
             <li className="mt-4">
               <button
