@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user);
       if (user) {
-        await saveUserToFirestore(user); // نحفظه لو مش محفوظ
+        await saveUserToFirestore(user); 
         const userDoc = await getDoc(doc(db, 'users', user.uid));
         if (userDoc.exists()) {
           setCurrentUser(userDoc.data());

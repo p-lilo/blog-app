@@ -54,7 +54,7 @@ const EditPost = () => {
   if (!currentPost) return <p className="text-center mt-10">Post not found..</p>;
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-gray-100 rounded-xl shadow-md">
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-gray-100 rounded-xl shadow-md ">
   <button
     onClick={() => navigate(-1)}
     className="text-sm text-gray-600 hover:text-gray-800 mb-4 flex items-center gap-2"

@@ -36,9 +36,9 @@ function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-purple-50 px-4">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-purple-100 to-purple-300">
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
-        {/* زر الرجوع */}
+       
         <button
           className="absolute left-4 top-4 text-purple-600 hover:text-purple-800"
           onClick={() => navigate(-1)}
@@ -46,14 +46,14 @@ function Register() {
           <ArrowLeftIcon className="h-6 w-6" />
         </button>
 
-        <h2 className="text-3xl font-bold text-center mb-6 text-purple-700">إنشاء حساب</h2>
+        <h2 className="text-3xl font-bold text-center mb-6 text-purple-700"> Sign Up</h2>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
         <form onSubmit={handleSignup} className="space-y-4">
           <input
             type="text"
-            placeholder="الاسم"
+            placeholder="name"
             className="input input-bordered w-full bg-purple-50"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -61,7 +61,7 @@ function Register() {
           />
           <input
             type="email"
-            placeholder="البريد الإلكتروني"
+            placeholder="email"
             className="input input-bordered w-full bg-purple-50"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -69,7 +69,7 @@ function Register() {
           />
           <input
             type="password"
-            placeholder="كلمة المرور"
+            placeholder="password"
             className="input input-bordered w-full bg-purple-50"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -80,7 +80,7 @@ function Register() {
             type="submit"
             className="btn w-full bg-purple-600 hover:bg-purple-700 text-white font-bold"
           >
-            إنشاء حساب
+            create account
           </button>
         </form>
       </div>

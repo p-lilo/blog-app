@@ -20,7 +20,7 @@ export const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // جلب البوستات من Firebase
+  // get posts from Firebase
   const fetchPosts = async () => {
     const snapshot = await getDocs(collection(db, "posts"));
     const postList = snapshot.docs.map((doc) => ({
@@ -35,7 +35,7 @@ export const PostProvider = ({ children }) => {
     fetchPosts();
   }, []);
 
-  // 🗑 حذف بوست
+  // delete post
   const deletePost = async (id) => {
     try {
       await deleteDoc(doc(db, "posts", id));
@@ -45,7 +45,7 @@ export const PostProvider = ({ children }) => {
     }
   };
 
-  // ➕ إضافة بوست
+  // add post
   const addPost = async (newPost) => {
     try {
       const docRef = await addDoc(collection(db, "posts"), newPost);

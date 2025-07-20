@@ -14,7 +14,7 @@ import Register from "./pages/Register";
 function App() {
 const [user, setUser] = useState(null);
   return (
-    <>
+    <div className="bg-gradient-to-b from-purple-100 to-purple-300">
     <NavBar user={user} />
     <Routes>
       <Route path="/" element={<Home />} />
@@ -25,7 +25,7 @@ const [user, setUser] = useState(null);
       <Route path="/post/:id" element={<PostPage  />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-    </>
+    </div>
   )
 }
 

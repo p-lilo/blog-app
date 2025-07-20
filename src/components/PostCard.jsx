@@ -1,15 +1,37 @@
-import { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { FaCommentAlt, FaEdit, FaHeart, FaShare, FaTrash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { usePostContext } from "../context/PostsContext";
+import firebase from "../firebase";
+
+const db = firebase.db;
 
 function PostCard({ post }) {
   const { user } = useAuth();
   const { deletePost } = usePostContext();
   const navigate = useNavigate();
   const [showDialog, setShowDialog] = useState(false);
-  
+  const [postOwner, setPostOwner] = useState(null);
+
+  useEffect(() => {
+    const fetchPostOwner = async () => {
+      if (!post.userId) return;
+      try {
+        const userRef = doc(db, "users", post.userId);
+        const userSnap = await getDoc(userRef);
+        if (userSnap.exists()) {
+          setPostOwner(userSnap.data());
+        }
+      } catch (error) {
+        console.error("Error fetching post owner:", error);
+      }
+    };
+
+    fetchPostOwner();
+  }, [post.userId]);
+
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this post?");
     if (!confirmDelete) return;
@@ -57,6 +79,10 @@ function PostCard({ post }) {
           </button>
         </div>
       )}
+
+      <h1 className="text-gray-500 mb-2">
+        By: {postOwner?.name || "Unknown"}
+      </h1>
 
       {post.imageUrl && (
         <img src={post.imageUrl} alt="post" className="w-full h-64 object-cover" />
